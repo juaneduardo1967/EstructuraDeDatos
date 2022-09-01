@@ -26,7 +26,6 @@ inmobiliario de una propiedad, según la siguiente regla:
 ▪ Entre 1 y 5 ambientes: 5% de impuesto
 #▪ Más de 5 ambientes: 35 % de impuesto*/ """
 import copy as cp
-
 def validarTipo(variable, nombre, tipo):
     if isinstance(variable, tipo):
         return variable
@@ -44,13 +43,20 @@ class Propiedad:
     self.__localidad = validarTipo(localidad, "localidad", str)
     self.__año = validarAño(año)
     self.__ambientes = ambientes
+  def __repr__(self):
+    return 'calle' +'numero' +'localidad' +'año'+ 'ambientes' 
   def getCalle(self):
     return self.__calle
   def modificarCalle(self,calle):
       self.__calle = calle
   def __repr__(self):
-    return self.__calle
-     
-
-prop1= Propiedad("repeto",1448,"ituzaingo",1200,4)
+    return str(self.__año) +"  " +str(self.__calle)
+prop1= Propiedad("repeto",1448,"ituzaingo",1900,4)
 print (prop1)
+
+
+def validarAltura(altura):
+  if validarTipo(altura, "altura", float) and altura > 0:
+    return altura
+  else:
+    raise Exception("Altura incorrecta")
